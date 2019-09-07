@@ -5,6 +5,7 @@ import requests
 from pprint import pprint
 from guizero import App, TextBox
 from time import localtime, time
+import datetime
 
 timezone = -6 * (60*60) # UTC - 6:00
 
@@ -29,7 +30,8 @@ def updateJoke():
     textBox.enabled=True
     textBox.value = joke['joke']
     textBox.enabled=False
-    print (joke['joke'])
+    now = datetime.datetime.now()    
+    print(now.strftime("%Y-%m-%d %H:%M:%S")+" " + joke['joke'])
 
 def getJoke():
     url = 'https://icanhazdadjoke.com'
