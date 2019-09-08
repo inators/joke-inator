@@ -3,23 +3,21 @@
 # and open the template in the editor.
 import requests
 from pprint import pprint
-from guizero import App, TextBox
+from guizero import App, Text
 from time import localtime, time
 import datetime
+import textwrap
 
 timezone = -6 * (60*60) # UTC - 6:00
 
 def main():
     global textBox, lastChanged
-    joke = getJoke()
     lastChanged = 0
-    print (joke['joke'])
+
     app = App(title="Joke-inator", width=500, height=100)
-    textBox = TextBox(app, multiline=True, width=50, height=5)
-    textBox.tk['wrap'] = 'word'
-    
-    textBox.value = joke['joke']
-    textBox.enabled=False
+    textBox = Text(app, size=14)
+
+    updateJoke()
 
     app.repeat(500, checkTime)
     app.display()
@@ -27,11 +25,14 @@ def main():
 def updateJoke():
     global textBox
     joke = getJoke()
-    textBox.enabled=True
-    textBox.value = joke['joke']
-    textBox.enabled=False
+    
+    jokeText = joke['joke']
+    jokeText = textwrap.wrap(jokeText,60)
+    jokeText = '\n'.join(jokeText)
+    textBox.value = jokeText
+
     now = datetime.datetime.now()    
-    print(now.strftime("%Y-%m-%d %H:%M:%S")+" " + joke['joke'])
+    print(now.strftime("%Y-%m-%d %H:%M:%S")+" " + jokeText)
 
 def getJoke():
     url = 'https://icanhazdadjoke.com'
