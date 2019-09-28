@@ -27,7 +27,7 @@ def updateJoke():
     joke = getJoke()
     
     jokeText = joke['joke']
-    jokeText = textwrap.wrap(jokeText,60)
+    jokeText = textwrap.wrap(jokeText,58)
     jokeText = '\n'.join(jokeText)
     textBox.value = jokeText
 
