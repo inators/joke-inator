@@ -20,6 +20,7 @@ def main():
     lastChanged = 0
 
     app = App(title="Joke-inator", width=500, height=100)
+    app.tk.geometry('%dx%d+%d+%d' % (500, 100, 1400, 50))
     textBox = Text(app, size=14)
 
     updateJoke()
