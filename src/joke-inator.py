@@ -11,7 +11,7 @@ import textwrap
 import socket
 import logging
 
-logging.basicConfig(level=logging.INFO, filename='joke-inator.log')
+logging.basicConfig(level=logging.INFO, filename='~/joke-inator.log')
 
 timezone = -6 * (60*60) # UTC - 6:00
 
