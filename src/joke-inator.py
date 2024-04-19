@@ -10,8 +10,17 @@ import datetime
 import textwrap
 import socket
 import logging
+import sys
+import os
 
-logging.basicConfig(level=logging.INFO, filename='/home/pi/joke-inator.log')
+filename = os.path.basename("__file__")
+logger = logging.getLogger("calendar-inator")
+logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(name)s] %(message)s',
+                     filename="/home/pi/mylogs.log")
+logger.info("Program start.")
+sys.stderr.write = logger.error
+sys.stdout.write = logger.info
+
 
 timezone = -6 * (60*60) # UTC - 6:00
 
