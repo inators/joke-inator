@@ -24,12 +24,12 @@ sys.stdout.write = logger.info
 
 
 timezone = -6 * (60*60) # UTC - 6:00
+app = App(title="Joke-inator", width=500, height=100)
 
 def main():
     global textBox, lastChanged
     lastChanged = 0
 
-    app = App(title="Joke-inator", width=500, height=100)
     app.tk.geometry('%dx%d+%d+%d' % (500, 100, 1400, 50))
     textBox = Text(app, size=14)
 
