@@ -12,9 +12,10 @@ import socket
 import logging
 import sys
 import os
+from colors import Colors
 
-filename = os.path.basename("__file__")
-logger = logging.getLogger("calendar-inator")
+filename = os.path.basename(__file__)
+logger = logging.getLogger(f"{Colors.LIGHT_BLUE}{filename}{Colors.END}")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(name)s] %(message)s',
                      filename="/home/pi/mylogs.log")
 logger.info("Program start.")
@@ -45,7 +46,7 @@ def updateJoke():
     jokeText = textwrap.wrap(jokeText,58)
     jokeText = '\n'.join(jokeText)
     textBox.value = jokeText
-
+    app.update()
     now = datetime.datetime.now()    
     print(now.strftime("%Y-%m-%d %H:%M:%S")+" " + jokeText)
 
