@@ -2,3 +2,4 @@
 /nbproject/
 mylog.log
 __pycache__
+.venv
